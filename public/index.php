@@ -1,3 +1,9 @@
+<!-- <?php
+require_once __DIR__ . '/src/helpers.php';
+
+$user = currentUser();
+?> -->
+
 <!DOCTYPE html>
 <html lang="en">
 

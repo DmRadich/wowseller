@@ -40,7 +40,7 @@ require_once __DIR__ . '/src/helpers.php';
                         Имя:
                         <input type="text" name="name" placeholder="Твое имя" id="name"
                             value="<?php echo old('name') ?>" <?php validationError('name'); ?>>
-                        <?php if (hasValidationError('name')): ?>
+                        <?php if (ValidationError('name')): ?>
                             <small><?php validationErrorMessage('name'); ?></small>
                         <?php endif; ?>
                     </label>
@@ -64,9 +64,8 @@ require_once __DIR__ . '/src/helpers.php';
                         Пароль:
                         <input type="password" name="password_confirmation" id="password_confirmation">
                     </label>
-
                     <button type="submit" id="submit">
-                        Войти
+                        Зарегестрироваться
                     </button>
                 </div>
             </div>

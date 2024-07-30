@@ -10,28 +10,26 @@ $passwordConfirmation = $_POST['password_confirmation'];
 
 // Validation
 
-addOldValue('name', $name);
-addOldValue('email', $email);
-
 if (empty($name)) {
-
-    addValidationError('name', 'Неверное имя');
+    setValidationError('name', 'Неверное имя');
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-    addValidationError('email', 'Указана неправильная почта');
+    setValidationError('email', 'Указана неправильная почта');
 }
 
 if (empty($password)) {
-    addValidationError('password', 'Пароль пустой');
+    setValidationError('password', 'Пароль пустой');
 }
 
-if ($password !== $passwordConfirmation) {
-    addValidationError('password', 'Пароли не совподают');
+if ($password != $passwordConfirmation) {
+    setValidationError('password', 'Пароли не совпадают');
 }
 
 if (!empty($_SESSION['validation'])) {
+    setOldValue('name', $name);
+    setOldValue('email', $email);
     redirect('/register.php');
 }
 
@@ -47,10 +45,9 @@ $stmt = $pdo->prepare($query);
 
 try {
     $stmt->execute($params);
-
 } catch (\Exception $e) {
     die($e->getMessage());
 }
 
 
-redirect('/login.php');
+redirect('/auth.php');
